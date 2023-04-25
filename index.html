@@ -10,13 +10,18 @@
 </head>
 
 <body>
+    <div id="overlay">
+        <div class="placeholder" id="line1">First Last</div>
+        <div class="placeholder" id="line2">Address</div>
+        <div class="placeholder" id="line3">City, State 12345</div>
+    </div>
     <div class="camera">
         <video id="video">Video stream not available</video>
         <button id="startbutton">Take photo</button>
     </div>
     <canvas id="canvas"> </canvas>
 
-    <p id="output"></p>
+    <textarea id="output"></textarea>
     <script src="./scripts/photo.js"></script>
 </body>
 

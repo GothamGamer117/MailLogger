@@ -1,5 +1,5 @@
 (() => {
-    const width = 320;
+    const width = 500;
     let height = 0;
 
     let streaming = false;
@@ -8,11 +8,13 @@
     let canvas = null;
     let output = null;
     let startbutton = null;
+    let overlay = null;
 
     function startup() {
         video = document.getElementById('video');
         canvas = document.getElementById('canvas');
         output = document.getElementById('output');
+        overlay = document.getElementById('overlay');
         startbutton = document.getElementById('startbutton');
 
         navigator.mediaDevices
@@ -37,6 +39,8 @@
                 video.setAttribute('height', height);
                 canvas.setAttribute('width', width);
                 canvas.setAttribute('height', height);
+                overlay.style.left = (width - (overlay.offsetWidth - 9)) / 2 + 'px';
+                overlay.style.top = (height - (overlay.offsetHeight - 9)) / 2 + 'px';
                 streaming = true;
             }
         })
@@ -83,7 +87,7 @@
         await worker.loadLanguage('eng');
         await worker.initialize('eng');
         console.log("initialized");
-        const { data: { text } } = await worker.recognize(file, { rectangle: { top: 0, left: 0, width: width, height: height }, });
+        const { data: { text } } = await worker.recognize(file, { rectangle: { top: (height - (overlay.offsetHeight - 9)) / 2, left: (width - (overlay.offsetWidth - 9)) / 2, width: (overlay.offsetWidth - 9), height: (overlay.offsetHeight - 9) }, });
         console.log(text);
         output.innerHTML = text;
     }
