@@ -9,6 +9,7 @@
     let output = null;
     let startbutton = null;
     let overlay = null;
+    let offButton = null;
 
     function startup() {
         video = document.getElementById('video');
@@ -16,6 +17,7 @@
         output = document.getElementById('output');
         overlay = document.getElementById('overlay');
         startbutton = document.getElementById('startbutton');
+        offButton = document.getElementById('disable');
 
         navigator.mediaDevices
             .getUserMedia({ video: { facingMode: 'environment' }, audio: false })
@@ -35,12 +37,16 @@
                     height = width / (4 / 3);
                 }
 
+                console.log(height);
+                console.log(video.offsetHeight);
+                console.log(overlay.offsetHeight - 9);
+                console.log(video.offsetHeight - (overlay.offsetHeight - 9));
                 video.setAttribute('width', width);
                 video.setAttribute('height', height);
                 canvas.setAttribute('width', width);
                 canvas.setAttribute('height', height);
-                overlay.style.left = (width - (overlay.offsetWidth - 9)) / 2 + 'px';
-                overlay.style.top = (height - (overlay.offsetHeight - 9)) / 2 + 'px';
+                overlay.style.left = (video.offsetWidth - (overlay.offsetWidth - 9)) / 2 + 'px';
+                overlay.style.top = (video.offsetHeight - (overlay.offsetHeight - 9)) / 2 + 'px';
                 streaming = true;
             }
         })

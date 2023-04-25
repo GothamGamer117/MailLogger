@@ -22,6 +22,16 @@
     display: none;
 }
 
+#info {
+    padding: 10px 0;
+    margin: 0;
+}
+
+#info a {
+    font-size: 16px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
 #video {
     z-index: 98;
 }
@@ -30,9 +40,23 @@
     display: none;
 }
 
+#startbutton {
+    border-width: 0;
+    background-color: rgb(136, 142, 190);
+    padding: 5px 8px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    font-size: 16px;
+}
+
+#startbutton:hover {
+    background-color: rgb(92, 100, 128);
+    color: white;
+}
+
 #output {
-    width: 200px;
-    height: 75px;
+    width: 500px;
+    height: 60px;
     resize: none;
     font-size: 16px;
     align-content: center;
